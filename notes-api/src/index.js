@@ -36,7 +36,7 @@ app.put("/notes/:id", async (req, res) => {
 app.delete("/notes/:id", async (req, res) => {
   try {
     const note = await Note.findByIdAndDelete(req.params.id);
-    res.send("Note has been deleted");
+    res.json({ message: "Note has been deleted!" });
   } catch (err) {
     res.status(500).send(err);
   }

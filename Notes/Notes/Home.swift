@@ -9,19 +9,27 @@ import SwiftUI
 
 struct Home: View {
     @State var notes = [Note]()
-    
     @State var showAddNoteSheet = false
+    @State var showAlert = false
+    @State var deleteItem: Note?
     
+    var alert: Alert {
+        Alert(title: Text("Delete"), message: Text("Are you sure you want to delete this note?"), primaryButton: .destructive(Text("Delete"), action: deleteNote), secondaryButton: .cancel())
+    }
     var body: some View {
         NavigationView {
-            List(self.notes) {i in
-                Text(i.note)
+            List(notes) {note in
+                Text(note.note)
                     .padding()
-                    .onTapGesture {
-                        print("Tapped \(i)")
+                    .onLongPressGesture {
+                        showAlert = true
+                        deleteItem = note
                     }
             }
-            .sheet(isPresented: $showAddNoteSheet, content: AddNoteView.init)
+            .alert(isPresented: $showAlert) {
+              alert
+            }
+            .sheet(isPresented: $showAddNoteSheet, onDismiss: fetchNotes, content: AddNoteView.init)
             .onAppear(perform: fetchNotes)
             .navigationTitle("Notes")
             .navigationBarItems(trailing:
@@ -47,10 +55,34 @@ struct Home: View {
             } else {
                 print("An error occured decoding the data.")
             }
-            
-            print(String(data: data, encoding: .utf8))
         }
         task.resume()
+    }
+    
+    func deleteNote() {
+        guard let id = deleteItem?.id else {return}
+        let url = URL(string: "http://localhost:5001/notes/\(id)")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "DELETE"
+        
+        let task = URLSession.shared.dataTask(with: request) {data, res, err in
+            guard err == nil else {return}
+            
+            guard let data = data else {return}
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                }
+                
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+        fetchNotes()
     }
 }
 
