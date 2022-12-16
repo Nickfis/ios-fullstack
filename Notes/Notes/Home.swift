@@ -13,18 +13,31 @@ struct Home: View {
     @State var showAlert = false
     @State var deleteItem: Note?
     
+    @State var isEditMode = false
+    
+    
     var alert: Alert {
         Alert(title: Text("Delete"), message: Text("Are you sure you want to delete this note?"), primaryButton: .destructive(Text("Delete"), action: deleteNote), secondaryButton: .cancel())
     }
     var body: some View {
         NavigationView {
             List(notes) {note in
-                Text(note.note)
-                    .padding()
-                    .onLongPressGesture {
-                        showAlert = true
-                        deleteItem = note
+                if (isEditMode) {
+                    HStack {
+                        Image(systemName: "pencil.circle.fill")
+                            .foregroundColor(.yellow)
+                        Text(note.note)
+                            .padding()
                     }
+                    
+                } else {
+                    Text(note.note)
+                        .padding()
+                        .onLongPressGesture {
+                            showAlert = true
+                            deleteItem = note
+                        }
+                }
             }
             .alert(isPresented: $showAlert) {
               alert
@@ -32,7 +45,10 @@ struct Home: View {
             .sheet(isPresented: $showAddNoteSheet, onDismiss: fetchNotes, content: AddNoteView.init)
             .onAppear(perform: fetchNotes)
             .navigationTitle("Notes")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading: Button(action: {
+                isEditMode.toggle()
+            }, label: {isEditMode ? Text("Done") : Text("Edit")}),
+                                    trailing:
                                     Button {
                 showAddNoteSheet.toggle()
             } label: {
