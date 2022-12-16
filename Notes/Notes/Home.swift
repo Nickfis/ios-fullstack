@@ -12,6 +12,8 @@ struct Home: View {
     @State var showAddNoteSheet = false
     @State var showAlert = false
     @State var deleteItem: Note?
+    @State var updateNote = ""
+    @State var updateNoteId = ""
     
     @State var isEditMode = false
     
@@ -29,7 +31,11 @@ struct Home: View {
                         Text(note.note)
                             .padding()
                     }
-                    
+                    .onTapGesture {
+                        updateNote = note.note
+                        updateNoteId = note.id
+                        showAddNoteSheet.toggle()
+                    }
                 } else {
                     Text(note.note)
                         .padding()
@@ -42,12 +48,18 @@ struct Home: View {
             .alert(isPresented: $showAlert) {
               alert
             }
-            .sheet(isPresented: $showAddNoteSheet, onDismiss: fetchNotes, content: AddNoteView.init)
+            .sheet(isPresented: $showAddNoteSheet, onDismiss: fetchNotes, content: {
+                if (isEditMode) {
+                    UpdateNoteView(text: $updateNote, id: $updateNoteId)
+                } else {
+                    AddNoteView()
+                }
+            })
             .onAppear(perform: fetchNotes)
             .navigationTitle("Notes")
             .navigationBarItems(leading: Button(action: {
                 isEditMode.toggle()
-            }, label: {isEditMode ? Text("Done") : Text("Edit")}),
+            }, label: {Text(isEditMode ? "Done" : "Edit")}), 
                                     trailing:
                                     Button {
                 showAddNoteSheet.toggle()
@@ -59,20 +71,24 @@ struct Home: View {
 
     func fetchNotes() {
         let url = URL(string: "http://localhost:5001/notes")!
-        print("Within fetch notes function")
         
         let task = URLSession.shared.dataTask(with: url) {data, response, err in
-            guard let data = data else {
+            guard let data = data else{
+                print("No data boii")
                 return}
             
             if let notes = try? JSONDecoder().decode([Note].self, from: data) {
-//                use notes here
                 self.notes = notes
+                print(notes)
             } else {
                 print("An error occured decoding the data.")
             }
         }
         task.resume()
+        
+        if (isEditMode) {
+            isEditMode = false
+        }
     }
     
     func deleteNote() {
@@ -105,7 +121,7 @@ struct Home: View {
 struct Note: Identifiable, Codable {
     var id: String {_id}
     let _id: String
-    let note: String
+    var note: String
 }
 
 struct ContentView_Previews: PreviewProvider {
