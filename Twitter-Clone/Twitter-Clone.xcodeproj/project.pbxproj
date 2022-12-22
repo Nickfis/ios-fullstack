@@ -23,6 +23,7 @@
 		85B321C0295469AB006FDDE8 /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B321BF295469AB006FDDE8 /* SearchUserCell.swift */; };
 		85B321C2295470CC006FDDE8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B321C1295470CC006FDDE8 /* Extensions.swift */; };
 		85B321C4295471DF006FDDE8 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B321C3295471DF006FDDE8 /* NotificationCell.swift */; };
+		85B321C62954735E006FDDE8 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B321C52954735E006FDDE8 /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		85B321BF295469AB006FDDE8 /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
 		85B321C1295470CC006FDDE8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		85B321C3295471DF006FDDE8 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		85B321C52954735E006FDDE8 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				859B27B629508DC4006CE12A /* MessagesView.swift */,
+				85B321C52954735E006FDDE8 /* MessageCell.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				859B27B129508D92006CE12A /* FeedView.swift in Sources */,
 				85B321C2295470CC006FDDE8 /* Extensions.swift in Sources */,
 				85B321C0295469AB006FDDE8 /* SearchUserCell.swift in Sources */,
+				85B321C62954735E006FDDE8 /* MessageCell.swift in Sources */,
 				859B279129508A4D006CE12A /* Twitter_CloneApp.swift in Sources */,
 				85B321BE29546665006FDDE8 /* SearchBar.swift in Sources */,
 				859B27BB2950D169006CE12A /* MultilineTextField.swift in Sources */,
