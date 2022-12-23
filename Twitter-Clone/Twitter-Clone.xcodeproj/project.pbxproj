@@ -36,6 +36,7 @@
 		85E441532955D4B500C02DA0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E441522955D4B500C02DA0 /* RegisterView.swift */; };
 		85E441552955D57F00C02DA0 /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E441542955D57F00C02DA0 /* CustomAuthTextField.swift */; };
 		85E441572955D65A00C02DA0 /* SecureAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E441562955D65A00C02DA0 /* SecureAuthTextField.swift */; };
+		85E441592955DC2B00C02DA0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E441582955DC2B00C02DA0 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		85E441522955D4B500C02DA0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		85E441542955D57F00C02DA0 /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
 		85E441562955D65A00C02DA0 /* SecureAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAuthTextField.swift; sourceTree = "<group>"; };
+		85E441582955DC2B00C02DA0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				85A84F1D2955C433006C3E73 /* WelcomeView.swift */,
 				85E441522955D4B500C02DA0 /* RegisterView.swift */,
+				85E441582955DC2B00C02DA0 /* LoginView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				85B321C62954735E006FDDE8 /* MessageCell.swift in Sources */,
 				859B279129508A4D006CE12A /* Twitter_CloneApp.swift in Sources */,
 				85A84F1E2955C433006C3E73 /* WelcomeView.swift in Sources */,
+				85E441592955DC2B00C02DA0 /* LoginView.swift in Sources */,
 				85B321BE29546665006FDDE8 /* SearchBar.swift in Sources */,
 				859B27BB2950D169006CE12A /* MultilineTextField.swift in Sources */,
 				85B321CA295474F9006FDDE8 /* TopBar.swift in Sources */,
