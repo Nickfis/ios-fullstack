@@ -11,13 +11,16 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @State var emailDone = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
             VStack {
                 VStack {
                     ZStack {
                         HStack {
-                            Button(action: {}, label: {
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                            }, label: {
                                 Text("Cancel")
                                     .foregroundColor(.blue)
                             })
@@ -51,7 +54,10 @@ struct LoginView: View {
                 
                 VStack {
                     Button(action: {
-                        emailDone = true
+                        if !email.isEmpty {
+                            emailDone = true
+                        }
+                        
                     }, label: {
                         Capsule()
                             .frame(width: 360, height: 40, alignment: .center)
