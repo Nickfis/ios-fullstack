@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIApplication {
     func endEditing() {
@@ -13,4 +14,8 @@ extension UIApplication {
     }
 }
 
-
+extension View {
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
+    }
+}

@@ -23,6 +23,8 @@ struct Home: View {
                                 .foregroundColor(selectedTab != "Home" ? Color("background") : nil)
                         }
                         .tag("Home")
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
 
                     SearchView()
                         .tabItem {
@@ -31,6 +33,8 @@ struct Home: View {
                                 .foregroundColor(selectedTab == "Search" ? Color("background") : nil)
                         }
                         .tag("Search")
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
                     
                     NotificationsView()
                         .tabItem {
@@ -39,6 +43,8 @@ struct Home: View {
                                 .foregroundColor(selectedTab == "Notifications" ? Color("background") : nil)
                         }
                         .tag("Notifications")
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
                     
                     MessagesView()
                         .tabItem {
@@ -47,6 +53,8 @@ struct Home: View {
                                 .foregroundColor(selectedTab == "Messages" ? Color("background") : nil)
                         }
                         .tag("Messages")
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
                 }
                 
                 VStack {
