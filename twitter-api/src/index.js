@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const userRouter = require("./routes/user");
+const tweetRouter = require("./routes/tweet");
 
 const app = express();
 
@@ -16,3 +17,4 @@ app.listen(PORT, () => {
 });
 
 app.use(userRouter);
+app.use(tweetRouter);
